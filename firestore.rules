@@ -1,0 +1,25 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Perfil do usuário: cada pessoa acessa só o próprio documento.
+    match /users/{uid} {
+      allow read, create, update: if request.auth != null && request.auth.uid == uid;
+      allow delete: if false;
+
+      // Histórico de partidas: só o dono lê e cria; ninguém altera ou apaga.
+      match /resultados/{resultadoId} {
+        allow read: if request.auth != null && request.auth.uid == uid;
+        allow create: if request.auth != null && request.auth.uid == uid
+          && request.resource.data.keys().hasOnly(['jogo', 'pontos', 'total', 'criadoEm'])
+          && request.resource.data.jogo in ['contas', 'maior', 'sequencia']
+          && request.resource.data.pontos is int
+          && request.resource.data.total is int
+          && request.resource.data.pontos >= 0
+          && request.resource.data.pontos <= request.resource.data.total
+          && request.resource.data.criadoEm == request.time;
+        allow update, delete: if false;
+      }
+    }
+  }
+}

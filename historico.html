@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#5b4bd8">
+  <meta name="description" content="Veja o histórico das suas partidas no Discalculy.">
+  <title>Meu histórico — Discalculy</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<a class="skip" href="#conteudo">Pular para o conteúdo</a>
+
+<header>
+  <a class="brand" href="index.html"><span class="logo">∑<i>✦</i></span><span>discalculy<span class="dot">.</span><small>aprender no seu ritmo</small></span></a>
+  <button id="menuBtn" class="menu-btn" aria-label="Abrir menu" aria-expanded="false">☰</button>
+  <nav id="nav">
+    <a href="index.html#sobre">Discalculia</a>
+    <a href="index.html#projeto">Projeto</a>
+    <a href="index.html#jogos">Minijogos</a>
+    <a href="index.html#dicas">Dicas</a>
+    <a href="index.html#equipe">Equipe</a>
+    <span id="authArea" class="auth-area"><a href="conta.html">Entrar</a></span>
+    <a class="nav-cta" href="index.html#jogos">Começar a jogar ↗</a>
+  </nav>
+</header>
+
+<main id="conteudo">
+  <section class="wrap section" id="historico">
+    <div class="heading">
+      <span class="eyebrow">MEU HISTÓRICO</span>
+      <h2>Sua evolução, <em>passo a passo.</em></h2>
+      <p id="historicoSub">Verificando sua sessão...</p>
+    </div>
+
+    <div id="estado" class="notice" role="status">Carregando...</div>
+    <a id="irParaJogos" class="btn primary hidden go-games" href="index.html#jogos">Ir para os minijogos →</a>
+
+    <div id="conteudoHistorico" class="hidden">
+      <div class="stats">
+        <div class="stat"><b id="statPartidas">0</b><span>Partidas jogadas</span></div>
+        <div class="stat"><b id="statMelhor">0</b><span>Melhor pontuação (de 5)</span></div>
+        <div class="stat"><b id="statMedia">—</b><span>Média de acertos</span></div>
+      </div>
+
+      <div class="table-wrap">
+        <table class="hist-table">
+          <caption class="sr">Últimas partidas</caption>
+          <thead>
+            <tr><th scope="col">Data</th><th scope="col">Jogo</th><th scope="col">Pontos</th></tr>
+          </thead>
+          <tbody id="linhas"></tbody>
+        </table>
+      </div>
+      <p class="footnote">Mostrando as últimas 50 partidas.</p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <a class="brand" href="index.html"><span class="logo">∑<i>✦</i></span><span>discalculy<span class="dot">.</span><small>aprender no seu ritmo</small></span></a>
+  <p>Projeto educativo de conscientização sobre a discalculia e apoio à aprendizagem matemática.</p>
+  <small class="copyright">© <span id="year"></span> Discalculy · Feito para aprender com mais inclusão.<br>Projeto Interdisciplinar de Desenvolvimento Web · Jullia dos Santos, Kauê Castro dos Santos, Laura Freitas de Campos, Mariana de Andrade Lima e Renato Moraes Alves.</small>
+</footer>
+
+<script src="comum.js"></script>
+<script type="module" src="auth-header.js"></script>
+<script type="module" src="historico.js" onerror="var e=document.getElementById('estado');e.className='notice erro';e.textContent='Não foi possível carregar o histórico. Verifique a conexão e abra o site por um endereço http (Live Server ou GitHub Pages).'"></script>
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#5b4bd8">
+  <meta name="description" content="Entre ou crie sua conta no Discalculy para guardar sua pontuação.">
+  <title>Entrar ou criar conta — Discalculy</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<a class="skip" href="#conteudo">Pular para o conteúdo</a>
+
+<header>
+  <a class="brand" href="index.html"><span class="logo">∑<i>✦</i></span><span>discalculy<span class="dot">.</span><small>aprender no seu ritmo</small></span></a>
+  <button id="menuBtn" class="menu-btn" aria-label="Abrir menu" aria-expanded="false">☰</button>
+  <nav id="nav">
+    <a href="index.html#sobre">Discalculia</a>
+    <a href="index.html#projeto">Projeto</a>
+    <a href="index.html#jogos">Minijogos</a>
+    <a href="index.html#dicas">Dicas</a>
+    <a href="index.html#equipe">Equipe</a>
+    <span id="authArea" class="auth-area"><a href="conta.html">Entrar</a></span>
+    <a class="nav-cta" href="index.html#jogos">Começar a jogar ↗</a>
+  </nav>
+</header>
+
+<main id="conteudo">
+  <section class="wrap section" id="conta">
+    <div class="heading">
+      <span class="eyebrow">SUA CONTA</span>
+      <h2>Salve seu <em>progresso.</em></h2>
+      <p>Crie uma conta ou entre para guardar suas pontuações e acompanhar sua evolução.</p>
+    </div>
+
+    <div class="game account">
+      <aside>
+        <span class="badge">ÁREA DO USUÁRIO</span>
+        <h3 id="contaTitulo">Entrar</h3>
+        <p id="contaDesc">Entre com seu e-mail e sua senha para ver seu histórico.</p>
+        <p class="save-hint">Seus dados ficam protegidos pelo Firebase. Só você vê o seu histórico.</p>
+        <img class="aside-penguin" src="penguin.png" alt="">
+      </aside>
+
+      <div class="play">
+        <div class="tabs" role="tablist" aria-label="Escolher entre entrar e criar conta">
+          <button class="tab active" type="button" data-modo="login" role="tab" aria-selected="true">Entrar</button>
+          <button class="tab" type="button" data-modo="cadastro" role="tab" aria-selected="false">Criar conta</button>
+        </div>
+
+        <form id="contaForm" class="account-form" novalidate>
+          <div id="campoNome" class="hidden">
+            <label for="nome">Nome</label>
+            <input id="nome" name="nome" type="text" autocomplete="name" maxlength="60" placeholder="Seu nome" aria-describedby="erroNome">
+            <p class="field-error" id="erroNome"></p>
+          </div>
+
+          <div>
+            <label for="email">E-mail</label>
+            <input id="email" name="email" type="email" autocomplete="email" placeholder="voce@exemplo.com" aria-describedby="erroEmail">
+            <p class="field-error" id="erroEmail"></p>
+          </div>
+
+          <div>
+            <label for="senha">Senha</label>
+            <input id="senha" name="senha" type="password" autocomplete="current-password" maxlength="64" placeholder="Mínimo de 6 caracteres" aria-describedby="erroSenha">
+            <p class="field-error" id="erroSenha"></p>
+          </div>
+
+          <div id="campoConfirmacao" class="hidden">
+            <label for="confirmacao">Repita a senha</label>
+            <input id="confirmacao" name="confirmacao" type="password" autocomplete="new-password" maxlength="64" placeholder="Digite a senha de novo" aria-describedby="erroConfirmacao">
+            <p class="field-error" id="erroConfirmacao"></p>
+          </div>
+
+          <label class="show-pass"><input id="mostrarSenha" type="checkbox"> Mostrar senha</label>
+
+          <p id="formMsg" class="form-msg" role="alert"></p>
+
+          <button id="btnEnviar" class="btn primary" type="submit">Entrar</button>
+          <button id="btnReset" class="text-btn" type="button">Esqueci minha senha</button>
+        </form>
+
+        <div id="jaLogado" class="logged hidden">
+          <div class="endstar">✦</div>
+          <h3>Você já está conectado</h3>
+          <p id="emailLogado"></p>
+          <div class="actions">
+            <a class="btn primary" href="index.html#jogos">Ir para os minijogos →</a>
+            <a class="btn ghost" href="historico.html">Ver meu histórico</a>
+            <button id="btnSairConta" class="btn ghost" type="button">Sair da conta</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <a class="brand" href="index.html"><span class="logo">∑<i>✦</i></span><span>discalculy<span class="dot">.</span><small>aprender no seu ritmo</small></span></a>
+  <p>Projeto educativo de conscientização sobre a discalculia e apoio à aprendizagem matemática.</p>
+  <small class="copyright">© <span id="year"></span> Discalculy · Feito para aprender com mais inclusão.<br>Projeto Interdisciplinar de Desenvolvimento Web · Jullia dos Santos, Kauê Castro dos Santos, Laura Freitas de Campos, Mariana de Andrade Lima e Renato Moraes Alves.</small>
+</footer>
+
+<script src="comum.js"></script>
+<script type="module" src="auth-header.js"></script>
+<script type="module" src="conta.js" onerror="document.getElementById('formMsg').className='form-msg erro';document.getElementById('formMsg').textContent='Não foi possível carregar o login. Verifique a conexão e abra o site por um endereço http (Live Server ou GitHub Pages).'"></script>
+</body>
+</html>
